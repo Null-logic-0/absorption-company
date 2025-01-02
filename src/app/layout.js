@@ -1,3 +1,4 @@
+import NavMenu from "@/components/NavMenu/NavMenu";
 import "./globals.css";
 
 export const metadata = {
@@ -9,7 +10,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header>
+          <p className="bg-[#4557ff] text-white text-xs text-center p-2 max-md:text-[10px] max-sm:text-[8px] max-sm:py-1">
+            These products have not been approved by or evaluated by the Food
+            and Drug Administration and are not intended to diagnose, treat,
+            cure or prevent any disease.
+          </p>
+          <NavMenu />
+        </header>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
