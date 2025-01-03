@@ -1,10 +1,11 @@
 import Hero from "@/components/Hero/Hero";
-import ProductsCarousel from "@/components/Hero/ProductsCarousel";
+import ProductsList from "@/components/Products/ProductsList";
 
 function page() {
   return (
     <>
       <Hero />
+      <ProductsList />
     </>
   );
 }
