@@ -1,5 +1,12 @@
+import Hero from "@/components/Hero/Hero";
+import ProductsCarousel from "@/components/Hero/ProductsCarousel";
+
 function page() {
-  return <div>home page</div>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
 
 export default page;
