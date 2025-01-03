@@ -5,8 +5,8 @@ import { Suspense } from "react";
 
 function ProductsPage() {
   return (
-    <div className="pt-[10px]">
-      <h1 className="bg-black text-[52px] text-white p-8 text-left ">
+    <div className="border-t-4 border-white mt-[6px]">
+      <h1 className="bg-black  text-[52px] text-white p-8 text-left max-sm:text-[30px] ">
         SHOP ALL
       </h1>
       <ProductBenefits />

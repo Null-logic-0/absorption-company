@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           </p>
           <NavMenu />
         </header>
-        <main className="pt-[5rem]">
+        <main className="pt-[5rem] max-md:pt-[70px]">
           <div className="flex flex-col gap-8 w-full ">{children}</div>
         </main>
       </body>
