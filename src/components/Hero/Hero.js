@@ -1,10 +1,10 @@
-import Link from "next/link";
 import { SiRainmeter } from "react-icons/si";
 import { PiLeafBold } from "react-icons/pi";
 import { SlChemistry } from "react-icons/sl";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import ProductsCarousel from "./ProductsCarousel";
 import { getProducts } from "@/_lib/data-service";
+import LinkButton from "../LinkButton";
 
 async function Hero() {
   const productsData = await getProducts();
@@ -23,13 +23,9 @@ async function Hero() {
             <br />
             supplements that actually work.
           </p>
-          <Link
-            href="/products"
-            className="bg-black px-8 py-4 border hover:border-black hover:bg-white
-           text-white font-[500] text-[16px] hover:text-gray-800 rounded-md max-w-[150px] w-full text-center"
-          >
-            SHOP ALL
-          </Link>
+          <div>
+            <LinkButton href="/products">SHOP ALL</LinkButton>
+          </div>
         </div>
 
         <div className="max-w-[500px] w-full flex justify-center border-2 border-black bg-white">

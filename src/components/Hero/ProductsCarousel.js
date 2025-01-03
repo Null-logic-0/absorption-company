@@ -34,7 +34,7 @@ const ProductsCarousel = ({ data }) => {
                 quality={100}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"
-                priority={currentIndex === item.id} // Optimize for visible image
+                priority={currentIndex === item.id}
               />
             </div>
           </div>
