@@ -22,3 +22,13 @@ export async function createCustomer(newCustomer) {
 
   return data;
 }
+
+export async function getProducts() {
+  const { data: products, error } = await supabase.from("products").select("*");
+
+  if (error) {
+    throw new Error("Products could not be loaded");
+  }
+
+  return products;
+}
