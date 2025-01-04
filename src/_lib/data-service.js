@@ -32,3 +32,17 @@ export async function getProducts() {
 
   return products;
 }
+
+export async function getSingleProduct(id) {
+  let { data: product, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    throw new Error("product could not be loaded");
+  }
+
+  return product;
+}

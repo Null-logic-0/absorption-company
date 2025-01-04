@@ -4,7 +4,7 @@ import Image from "next/image";
 import LinkButton from "../LinkButton";
 
 function ProductCard({ data }) {
-  const { image, title, description, price, discount } = data;
+  const { image, title, description, price, discount, id } = data;
   const totalPrice = price - discount;
   return (
     <div className="flex flex-col border-2 border-black h-[500px] max-w-[400px] w-full ">
@@ -41,7 +41,7 @@ function ProductCard({ data }) {
         <p className="text-sm text-gray-800 font-normal opacity-70 italic">
           {textSlicer(description)}...
         </p>
-        <LinkButton href="/products/id">SHOP NOW</LinkButton>
+        <LinkButton href={`/products/${id}`}>SHOP NOW</LinkButton>
       </div>
     </div>
   );
