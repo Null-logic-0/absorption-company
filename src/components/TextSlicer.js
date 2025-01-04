@@ -9,7 +9,7 @@ function TextSlicer({ children, title }) {
     setShorten(!shorten);
   }
   return (
-    <div className="border-t-2 border-b-2 border-black px-8 py-4">
+    <div className="border-t border-b border-black px-8 py-4">
       <div className="flex justify-between items-center">
         <h3 className="text-[18px] font-semibold text-black">{title}</h3>
         <button

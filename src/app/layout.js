@@ -1,5 +1,6 @@
 import NavMenu from "@/components/NavMenu/NavMenu";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Absorption Company",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         <main className="pt-[5rem] max-md:pt-[70px]">
           <div className="flex flex-col gap-8 w-full ">{children}</div>
         </main>
+        <Footer />
       </body>
     </html>
   );
