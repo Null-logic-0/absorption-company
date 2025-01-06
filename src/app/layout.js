@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen">
+      <body className="flex flex-col min-h-screen">
         <header className="fixed top-0 w-full z-50">
           <p className="bg-[#4557ff] text-white text-xs text-center p-2 max-md:text-[10px] max-sm:text-[8px] max-sm:py-1">
             These products have not been approved by or evaluated by the Food
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           </p>
           <NavMenu />
         </header>
-        <main className="pt-[5rem] max-md:pt-[70px]">
+        <main className=" flex-grow pt-[5rem] max-md:pt-[70px]">
           <div className="flex flex-col gap-8 w-full ">{children}</div>
         </main>
         <Footer />
