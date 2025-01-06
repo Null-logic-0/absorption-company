@@ -34,7 +34,7 @@ export async function getProducts() {
 }
 
 export async function getSingleProduct(id) {
-  let { data: product, error } = await supabase
+  const { data: product, error } = await supabase
     .from("products")
     .select("*")
     .eq("id", id)

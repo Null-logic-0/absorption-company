@@ -7,6 +7,7 @@ function Input({
   defaultValue,
   onChange,
   disabled,
+  readOnly,
 }) {
   return (
     <div className="flex flex-col gap-1 w-full">
@@ -18,10 +19,11 @@ function Input({
         onChange={onChange}
         type={type}
         name={name}
+        readOnly={readOnly}
         disabled={disabled}
         id={id}
         className={`border-[#4c5663] shadow-md border rounded-md px-4 py-3 w-full ${
-          disabled
+          disabled || readOnly
             ? "bg-slate-100  cursor-not-allowed text-slate-400 "
             : "bg-transparent"
         }`}
