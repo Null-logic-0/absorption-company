@@ -46,3 +46,14 @@ export async function getSingleProduct(id) {
 
   return product;
 }
+
+export async function getReviews() {
+  const { data: reviews, error } = await supabase
+    .from("reviews")
+    .select(`*,customer_id(id,fullName)`);
+  if (error) {
+    throw new Error("Reviews could not fetched");
+  }
+
+  return reviews;
+}
