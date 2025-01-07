@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 import { redirect } from "next/navigation";
 
@@ -101,4 +101,35 @@ export async function updateUserInfo(prevState, formData) {
   redirect("/account");
 
   return userData;
+}
+
+export async function createReview(formData) {
+  const content = formData.get("review");
+  const rating = formData.get("rating");
+
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const data = {
+    content,
+    rating,
+    customer_id: session.user.customer,
+  };
+
+  const { data: insertedData, error } = await supabase
+    .from("reviews")
+    .insert([data]);
+
+  if (error) {
+    console.error("Error inserting data:", error.message);
+    return {
+      errors: {
+        database: "Failed to write review. Please try again later.",
+      },
+    };
+  }
+
+  revalidatePath("/reviews/thanks");
+  redirect("/reviews/thanks");
+  return insertedData;
 }

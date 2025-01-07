@@ -1,3 +1,4 @@
+"use client";
 import { formatCurrency } from "@/_helpers/formatCurrency";
 import Image from "next/image";
 import TextSlicer from "../TextSlicer";
