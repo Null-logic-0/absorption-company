@@ -2,6 +2,10 @@ import Image from "next/image";
 import aboutimg1 from "../../../public/about-1.jpg";
 import aboutimg2 from "../../../public/about-2.jpg";
 
+export const metadata = {
+  title: "About us",
+};
+
 function AboutPage() {
   return (
     <div>

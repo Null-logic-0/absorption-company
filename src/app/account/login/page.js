@@ -1,6 +1,10 @@
 import Heading from "@/components/Heading";
 import SignInButton from "@/components/SignInButton";
 
+export const metadata = {
+  title: "Login",
+};
+
 function LoginPage() {
   return (
     <div className="flex flex-col justify-center items-center gap-8 pt-[10vh] px-8">
