@@ -1,7 +1,11 @@
 import Image from "next/image";
 import img from "../../../public/faqs.jpg";
 import TextSlicer from "@/components/TextSlicer";
-import ProductBenefits from "@/components/ProductBenefits";
+
+export const metadata = {
+  title: "FAQs",
+  description: "You have questions and we have answers.",
+};
 
 function page() {
   return (

@@ -1,5 +1,10 @@
 import ContactsForm from "@/components/ContactsForm";
 
+export const metadata = {
+  title: "Contact us",
+  description: "Have a question send us the message",
+};
+
 function Contactspage() {
   return (
     <div className="flex justify-center">

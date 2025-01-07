@@ -3,6 +3,10 @@ import ProductsList from "@/components/Products/ProductsList";
 import Spinner from "@/components/Spinner";
 import { Suspense } from "react";
 
+export const metadata = {
+  title: "Shop all",
+};
+
 function ProductsPage() {
   return (
     <div className="border-t-4 border-white mt-[6px]">
