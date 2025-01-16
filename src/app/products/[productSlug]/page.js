@@ -32,7 +32,7 @@ async function ProductPage({ params }) {
       <div className="px-8 pt-8 ">
         <GobackButton />
       </div>
-      <Product data={product} />
+      <Product product={product} />
       <hr className="border border-black" />
       <Suspense fallback={<Spinner />}>
         <ReviewsList reviews={reviews} />

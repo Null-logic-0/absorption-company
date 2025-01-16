@@ -3,10 +3,12 @@ import { formatCurrency } from "@/_helpers/formatCurrency";
 import Image from "next/image";
 import TextSlicer from "../TextSlicer";
 import Link from "next/link";
+import AddProductToCartButton from "./AddProductToCartButton";
 
-function Product({ data }) {
-  const { image, title, price, discount, description, id } = data;
+function Product({ product }) {
+  const { image, title, price, discount, description, id } = product;
   const totalPrice = price - discount;
+
   return (
     <div className="px-8 py-4 flex w-full gap-8 justify-center max-md:flex-wrap">
       <Link
@@ -17,6 +19,9 @@ function Product({ data }) {
           src={image}
           alt={`Product ${title}`}
           fill
+          quality={100}
+          priority={true}
+          sizes="(max-width: 768px) 100vw, 33vw"
           className="object-contain"
         />
       </Link>
@@ -36,12 +41,7 @@ function Product({ data }) {
           </p>
         )}
         <div className="max-md:flex max-md:justify-center ">
-          <button
-            className="border hover:border-black
-         hover:bg-white hover:text-black bg-black text-white text-[20px] font-semibold px-4 py-2 rounded-md"
-          >
-            Add To Cart
-          </button>
+          <AddProductToCartButton product={product} />
         </div>
         <TextSlicer title="Description">{description}</TextSlicer>
       </div>
