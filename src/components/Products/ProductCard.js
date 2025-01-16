@@ -2,6 +2,7 @@ import { formatCurrency } from "@/_helpers/formatCurrency";
 import { textSlicer } from "@/_helpers/textSlicer";
 import Image from "next/image";
 import LinkButton from "../LinkButton";
+import AddProductToCartButton from "./AddProductToCartButton";
 
 function ProductCard({ data }) {
   const { image, title, description, price, discount, id } = data;
@@ -41,7 +42,10 @@ function ProductCard({ data }) {
         <p className="text-sm text-gray-800 font-normal opacity-70 italic">
           {textSlicer(description)}...
         </p>
-        <LinkButton href={`/products/${id}`}>SHOP NOW</LinkButton>
+        <div className="flex items-center gap-4">
+          <LinkButton href={`/products/${id}`}>SHOP NOW</LinkButton>
+          <AddProductToCartButton product={data} />
+        </div>
       </div>
     </div>
   );

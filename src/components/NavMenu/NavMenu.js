@@ -1,10 +1,12 @@
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import { FaUser } from "react-icons/fa";
-import AsideCartModal from "../AsideCartModal";
+import AsideCartModal from "../Cart/AsideCartModal";
 import BurgerMenu from "./BurgerMenu";
+import { auth } from "@/_lib/auth";
 
-function NavMenu() {
+async function NavMenu() {
+  const session = await auth();
   return (
     <div className="flex bg-black justify-between items-center pl-8 max-md:py-2 max-sm:pl-4">
       <Link
@@ -24,8 +26,8 @@ function NavMenu() {
         <li className="md:hidden ">
           <BurgerMenu />
         </li>
-        <li className="px-4 max-md:px-2">
-          <AsideCartModal />
+        <li className="px-4 max-md:px-2 cursor-pointer">
+          <AsideCartModal session={session} />
         </li>
         <li className="border-l-2 border-white px-8 py-4 max-md:hidden">
           <NavLinks href="/account">
