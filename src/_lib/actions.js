@@ -3,6 +3,9 @@ import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 import { redirect } from "next/navigation";
+import Stripe from "stripe";
+import { stripeKey } from "./data-service";
+import Product from "@/components/Products/Product";
 
 export async function loginAction() {
   await signIn("google", { redirectTo: "/account" });
@@ -131,5 +134,101 @@ export async function createReview(formData) {
 
   revalidatePath("/reviews/thanks");
   redirect("/reviews/thanks");
+  return insertedData;
+}
+
+// export async function createCheckoutSession() {
+//   const stripeInstance = new Stripe(stripeKey);
+//   const checkoutSession = await stripeInstance.checkout.sessions.create({
+//     ui_mode: "embedded",
+//     invoice_creation: {
+//       enabled: true,
+//     },
+//     customer_email: "test@gmail.com",
+//     submit_type: "pay",
+//     billing_address_collection: "auto",
+//     shipping_address_collection: {
+//       allowed_countries: ["all"],
+//     },
+//     line_items: [
+//       {
+//         price_data: {
+//           currency: "usd",
+//           product_data: {
+//             name: "Camu camu",
+//           },
+//           unit_amount: 1000,
+//         },
+//         quantity: 2,
+//       },
+//     ],
+
+//     mode: "payment",
+//     return_url: `http://localhost:3000/payment-status?session_id={CHECKOUT_SESSION_ID}`,
+//   });
+//   return {
+//     clientSecret: checkoutSession.client_secret,
+//   };
+// }
+
+// export async function createOrder(product) {
+//   const session = await auth();
+//   if (!session) throw new Error("You must be logged in");
+
+//   const customerId = session.user.customer;
+
+//   const data = {
+//     product_id: product,
+//     customer_id: customerId,
+//   };
+//   const { data: insertedData, error } = await supabase
+//     .from("order_items")
+//     .insert([data]);
+
+//   if (error) {
+//     console.error("Error inserting data:", error.message);
+//     return {
+//       errors: {
+//         database: "Failed to checkout. Please try again later.",
+//       },
+//     };
+//   }
+
+//   revalidatePath("/payment-status");
+//   redirect("/payment-status");
+//   return insertedData;
+// }
+
+///////////////////////////////////////////
+
+export async function createOrder(products) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const customerId = session.user.customer;
+
+  const productIds = Array.isArray(products) ? products : [products];
+
+  const data = productIds.map((product) => ({
+    product_id: product,
+    customer_id: customerId,
+  }));
+
+  const { data: insertedData, error } = await supabase
+    .from("order_items")
+    .insert(data);
+
+  if (error) {
+    console.error("Error inserting data:", error.message);
+    return {
+      errors: {
+        database: "Failed to checkout. Please try again later.",
+      },
+    };
+  }
+
+  revalidatePath("/payment-status");
+  redirect("/payment-status");
+
   return insertedData;
 }
