@@ -1,12 +1,14 @@
+"use client";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import { FaUser } from "react-icons/fa";
-import AsideCartModal from "../Cart/AsideCartModal";
+import { IoBagSharp } from "react-icons/io5";
 import BurgerMenu from "./BurgerMenu";
-import { auth } from "@/_lib/auth";
+import { useProductContext } from "../ProductsContext";
 
-async function NavMenu() {
-  const session = await auth();
+function NavMenu() {
+  const { cartItems } = useProductContext();
+
   return (
     <div className="flex bg-black justify-between items-center pl-8 max-md:py-2 max-sm:pl-4">
       <Link
@@ -27,7 +29,20 @@ async function NavMenu() {
           <BurgerMenu />
         </li>
         <li className="px-4 max-md:px-2 cursor-pointer">
-          <AsideCartModal session={session} />
+          <NavLinks href={"/cart"}>
+            <div className="relative">
+              {cartItems.length > 0 && (
+                <span
+                  className="absolute -top-3 -right-3 w-5 h-5 rounded-full
+           bg-red-500 text-white flex justify-center items-center text-xs font-semibold"
+                >
+                  {cartItems.length}
+                </span>
+              )}
+
+              <IoBagSharp className="text-white text-xl " />
+            </div>
+          </NavLinks>
         </li>
         <li className="border-l-2 border-white px-8 py-4 max-md:hidden">
           <NavLinks href="/account">

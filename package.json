@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.5.0",
     "@supabase/supabase-js": "^2.47.10",
     "antd": "^5.22.7",
     "autoprefixer": "^10.4.20",
@@ -19,6 +21,7 @@
     "react-icons": "^5.4.0",
     "react-phone-input-2": "^2.15.1",
     "react-select": "^5.9.0",
+    "stripe": "^17.5.0",
     "supabase": "^2.1.1",
     "world-countries": "^5.0.0"
   },

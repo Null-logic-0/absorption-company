@@ -1,5 +1,7 @@
 import { supabase } from "./supabase";
 
+export const stripeKey = process.env.NEXT_PUBLIC_STIRPE_PUBLISHABLE_KEY;
+
 export async function getCustomers(email) {
   const { data: customers } = await supabase
     .from("customers")
