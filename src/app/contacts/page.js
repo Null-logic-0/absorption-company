@@ -7,15 +7,12 @@ export const metadata = {
 
 function Contactspage() {
   return (
-    <div className="flex justify-center">
-      <div className="w-1/2">
-        <ContactsForm />
-      </div>
-      <div className="w-1/2">
-        <h2 className="font-bold  text-black text-[70px] max-w-[500px] w-full leading-tight max-sm:text-[30px] p-8 ">
-          Contact us
-        </h2>
-      </div>
+    <div className="flex flex-col justify-center max-w-[600px] w-full mx-auto">
+      <h2 className="font-bold  text-black text-[70px] text-center leading-tight max-sm:text-[30px] p-8 ">
+        Contact us
+      </h2>
+
+      <ContactsForm />
     </div>
   );
 }
