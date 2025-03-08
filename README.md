@@ -22,3 +22,4 @@ Absorption Company is a corporate website built with Next.js, Tailwind CSS, and 
 ![Screenshot 2025-03-08 at 12 37 37](https://github.com/user-attachments/assets/13f5deb4-97a9-47d6-915e-0cfab04127e4)
 ![Screenshot 2025-03-08 at 12 37 58](https://github.com/user-attachments/assets/7fc68787-6b9a-4069-b0a0-7f3d10a68629)
 ![Screenshot 2025-03-08 at 12 38 19](https://github.com/user-attachments/assets/52aeb56f-24b1-4ef8-8fd0-db27d49a3403)
+*
