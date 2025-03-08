@@ -7,15 +7,16 @@ import { useRouter } from "next/navigation";
 import { createOrder } from "@/_lib/actions";
 
 function CartList({ session }) {
-  const { totalAmount, cartItems } = useProductContext();
+  const { totalAmount, cartItems, clearCart } = useProductContext();
   const productIds = cartItems.map((product) => product.id);
   const router = useRouter();
 
-  function handleCheckout() {
+  async function handleCheckout() {
     if (!session) {
       router.push("/account/login");
     } else {
-      createOrder(productIds);
+      clearCart();
+      await createOrder(productIds);
     }
   }
   return (

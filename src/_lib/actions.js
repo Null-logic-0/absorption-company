@@ -226,9 +226,7 @@ export async function createOrder(products) {
       },
     };
   }
-
-  revalidatePath("/payment-status");
+  
+  revalidatePath("/", "page");
   redirect("/payment-status");
-
-  return insertedData;
 }
